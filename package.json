@@ -1,7 +1,7 @@
 {
-    "name": "laagencia",
+    "name": "dragonball",
     "version": "1.0.0",
-    "description": "laAgencia",
+    "description": "Cards Dragon Ball",
     "main": "index.html",
     "dependencies": {
         "json-server": "*"

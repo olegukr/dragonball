@@ -4,70 +4,77 @@ const requestCharactersURL = 'https://dragonball-api.com/api/characters?limit=5'
 async function fetchPlanetsJson() {
     const response = await fetch(requestPlanetURL);
     const planets = await response.json();
-    return planets
+    // console.log(planets)
+    return planets.items
 }
 
 async function fetchCharactersJson() {
     const response = await fetch(requestCharactersURL);
     const characters = await response.json();
-    return characters
+    return characters.items
 }
 
-fetchPlanetsJson().then(planet => {
-    for (let index=0; planet.planets; index++) {
-        
-        let id = planet.planets[index].id;
-        let name = planet.planets[index].name;
-        let ki = planet.planets[index].ki;
-        let maxKi = planet.planets[index].maxKi;
-        let race = planet.planets[index].race;
-        let gender = planet.planets[index].gender;
-        let description = planet.planets[index].description;
-        let image = planet.planets[index].image;
-        let affiliation = planet.planets[index].affiliation;
-        let deletedAt = planet.planets[index].deletedAt;
+fetchPlanetsJson().then( planets => {
+    planets.forEach(planet =>  {
 
-        planetSection.innerHTML += `
-        
-            <div class="cardsPlanets" style="width: 18rem;">
-            <img src="${image}" class="card-img-top" alt="...">
+    let id = planet.id;
+    let name = planet.name;
+    let isDestroyed = planet.isDestroyed;
+    let description = planet.description;
+    let image = planet.image;
+    // let deletedAt = planet.deletedAt;
+
+    planetSection.innerHTML += `
+    
+        <div class="card" style="width: 18rem;">
+        <img src="${image}" class="card-img-top" alt="...">
+
             <div class="card-body">
-                <h5 class="card-title">${id}. ${name} ${ki}€</h5>
+                <h5 class="card-title">${name}</h5>
+                <p class="card-text">Status: ${isDestroyed}</p>                 
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Description</h5>
                 <p class="card-text">${description}</p>
             </div>
-        
-        
+        </div>
         `
-        
-        console.log(id);
-        console.log(name);
-    }
+    })
 })
 
-    fetchCharactersJson().then(character => {
-        for (let index=0; character.characters; index++) {
 
-            let idChar = character.characters[index].id;
-            let nameChar = character.characters[index].name;
-            let kiChar = character.characters[index].ki;
-            let maxKiChar = character.characters[index].maxKi;
-            let raceChar = character.characters[index].gender;
-            let descriptionChar = character.characters[index].description;
-            let imageChar = character.characters[index].image;
-            let affiliationChar = character.characters[index].affiliation;
-            let deletedAtChar = character.characters[index].deletedAt;
+fetchCharactersJson().then( characters => {
+    characters.forEach(character => {
+    
+    let idCharcter = character.id;
+    let nameCharcter = character.name;
+    let ki = character.ki;
+    let maxKi = character.maxKi;
+    let race = character.race;
+    let gender = character.gender;
+    let descriptionCharcter = character.description;
+    let imageCharcter = character.image;
+    let affiliation = character.affiliation;
+    let deletedAtCharcter = character.deletedAt;
 
-            console.log(nameChar);
+    characterSection.innerHTML += `
 
-            // characterSection.innerHTML += `
-        
-            // <div class="cardsCharacters" style="width: 18rem;">
-            // <img src="${imageChar}" class="card-img-top" alt="...">
-            // <div class="card-body">
-            //     <h5 class="card-title">${idChar}. ${nameChar} ${kiChar}€</h5>
-            //     <p class="card-text">${descriptionChar}</p>
-            // </div>
-            // `
-        }
+        <div class="card" class="d-flex flex-wrap" style="width: 18rem;">
+            <img src="${imageCharcter}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${nameCharcter}</h5>
+                <p class="card-text">${race} - ${gender}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Base KI:</li>
+                <li class="list-group-item">${ki}</li>
+                <li class="list-group-item">Total KI</li>
+                <li class="list-group-item">${maxKi}</li>
+                <li class="list-group-item">Affiliation:</li>
+                <li class="list-group-item">${affiliation}</li>
+            </ul>
+        </div>
+        `
+    })
 
 })

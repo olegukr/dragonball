@@ -1,12 +1,9 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 const requestPlanetURL = 'https://dragonball-api.com/api/planets';
-const requestCharactersURL = 'https://dragonball-api.com/api/characters?limit=5'
+const requestCharactersURL = 'https://dragonball-api.com/api/characters?page=1&limit=100'
 
 async function fetchPlanetsJson() {
     const response = await fetch(requestPlanetURL);
     const planets = await response.json();
-    // console.log(planets)
     return planets.items
 }
 
@@ -24,18 +21,16 @@ fetchPlanetsJson().then( planets => {
     let isDestroyed = planet.isDestroyed;
     let description = planet.description;
     let image = planet.image;
-    // let deletedAt = planet.deletedAt;
 
     planetSection.innerHTML += `
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
-            <div class="card" style="width: 18rem;">
-                <img src="${image}" class="card-img-top" alt="Planet image">
+            <div class="card" style="width: 280px; height: 740px;">
+                <img src="${image}" class="card-img-top" style="height: 280px; object-fit: cover;" alt="Planet image">
 
                 <div class="card-body">
                     <h5 class="card-title">${name}</h5>
-                    <p class="card-text">Status: ${isDestroyed}</p>                 
-                </div>
-                <div class="card-body">
+                    <p class="card-text">is destoyed: ${isDestroyed}</p>                 
+  
                     <h5 class="card-title">Description</h5>
                     <p class="card-text">${description}</p>
                 </div>
@@ -63,8 +58,13 @@ fetchCharactersJson().then( characters => {
     characterSection.innerHTML += `
 
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
-            <div class="card" style="width: 18rem;">
-                <img src="${imageCharcter}" class="card-img-top" alt="...">
+            <div class="card" style="width: 280px; height: 740px;">
+                <img src="${imageCharcter}" 
+                    class="card-img-top" 
+                        style="height: 400px;
+                        object-fit: contain;" 
+                        alt="character image"
+                 >
                 <div class="card-body">
                     <h5 class="card-title">${nameCharcter}</h5>
                     <p class="card-text">${race} - ${gender}</p>

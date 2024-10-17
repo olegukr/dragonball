@@ -11,21 +11,36 @@
     <body>
         <header>
             <div class="header-container">
-                <div class="logo">
-                    <h1>Dragon Ball</h1>
-                </div>
                 <nav class="nav-links">
-                    <a href="#home">HOME</a>
+                    <a href="index.html">HOME</a>
                     <a href="index.html">CHARACTERS</a>
                     <a href="planet.html">PLANET</a>
                   </nav>
+                  <!-- <div class="logo"><h1>Dragon Ball</h1></div> -->
+                <div class="class">
+                    <img src="https://web.dragonball-api.com/images-compress/logo_dragonballapi.webp" alt="">
+                </div>
+                <div>
+                    <div class="group-name"><h1>Characters</h1></div>
+                </div>
+
             </div>
-    </header>
+        </header>
         <main>
-            <h1>Characters</h1>
-            <div id="characterSection" class="cardsCharacters"></div>
+            
+            <div id="characterSection" class="row" class="cardsCharacters"></div>
+
+            <div class="group-name"><h1>Planets</h1></div>
+            <div id="planetSection" class="row" class="cardsPlanets"></div>
+
+            
         </main>
-        <footer>C</footer>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-txt">CHARACTERS: 58</div>
+                <div class="footer-txt">PLANETS: 20</div>
+            </div>
+        </footer>
         <script src="./js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>

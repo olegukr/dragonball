@@ -68,15 +68,16 @@ fetchCharactersJson().then( characters => {
                 <div class="card-body">
                     <h5 class="card-title">${nameCharcter}</h5>
                     <p class="card-text">${race} - ${gender}</p>
+                
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Base KI:</li>
+                        <li class="list-group-item2">${ki}</li>
+                        <li class="list-group-item">Total KI</li>
+                        <li class="list-group-item2">${maxKi}</li>
+                        <li class="list-group-item">Affiliation:</li>
+                        <li class="list-group-item2>${affiliation}</li>
+                    </ul>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Base KI:</li>
-                    <li class="list-group-item">${ki}</li>
-                    <li class="list-group-item">Total KI</li>
-                    <li class="list-group-item">${maxKi}</li>
-                    <li class="list-group-item">Affiliation:</li>
-                    <li class="list-group-item">${affiliation}</li>
-                </ul>
             </div>
         </div>
         `
